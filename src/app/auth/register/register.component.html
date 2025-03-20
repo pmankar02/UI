@@ -12,43 +12,63 @@
                     <mat-form-field color="accent">
                         <mat-label>First Name</mat-label>
                         <input matInput formControlName="firstName">
+                        <mat-error> Field is required!</mat-error>
                     </mat-form-field>
                 </mat-grid-tile>
                 <mat-grid-tile>
                     <mat-form-field color="accent">
                         <mat-label>last Name</mat-label>
                         <input matInput formControlName="lastName">
+                        <mat-error> Field is required!</mat-error>
                     </mat-form-field>
                 </mat-grid-tile>
                 <mat-grid-tile colspan="2">
                     <mat-form-field color="accent" class="width-100">
                         <mat-label>Email</mat-label>
                         <input matInput formControlName="email">
+                        <mat-error> Field is required!</mat-error>
                     </mat-form-field>
                 </mat-grid-tile>
                 <mat-grid-tile colspan="2">
                     <mat-form-field color="accent" class="width-100">
                         <mat-label>Mobile Number</mat-label>
                         <input matInput formControlName="mobileNumber">
+                        <mat-error> Field is required!</mat-error>
                     </mat-form-field>
                 </mat-grid-tile>
                 <mat-grid-tile>
                     <mat-form-field color="accent">
                         <mat-label>Password</mat-label>
-                        <input matInput formControlName="password">
+                        <input [type]="hidepwdcontext ? 'password' : 'text'"
+                            matInput formControlName="password">
+                    <button mat-icon-button matSuffix (click)="hidepwdcontext = !hidepwdcontext">  
+                        <mat-icon>
+                            {{hidepwdcontext ? "visibility_off" : "visibility_on"}}
+                        </mat-icon>
+                    </button>
+                        <mat-error> Field is required!</mat-error>
+                 
                     </mat-form-field>
                 </mat-grid-tile>
                 <mat-grid-tile>
                     <mat-form-field color="accent">
                         <mat-label>Repeat Password</mat-label>
-                        <input matInput formControlName="rpasswoed">
+                        <input [type]="hidepwdcontext ? 'password' : 'text'"
+                                matInput formControlName="rpassword">
+                        <button mat-icon-button matSuffix (click)="hidepwdcontext = !hidepwdcontext">  
+                            <mat-icon>
+                                {{hidepwdcontext ? "visibility_off" : "visibility_on"}}
+                            </mat-icon>
+                        </button>       
+                        <mat-error> Field is required!</mat-error>
                     </mat-form-field>
                 </mat-grid-tile>
             </mat-grid-list>
         </mat-card-content>
 
         <mat-card-actions>
-            <button mat-raised-button color="accent">Register</button>
+            <button mat-raised-button color="accent"
+                [disabled]="registerForm.invalid" (click)="register()">Register</button>
         </mat-card-actions>
 
         <mat-card-actions>
