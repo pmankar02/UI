@@ -1,0 +1,104 @@
+import { HttpClient, HttpParams } from '@angular/common/http';
+import { Injectable } from '@angular/core';
+import { JwtHelperService } from '@auth0/angular-jwt';
+import { map, Subject } from 'rxjs';
+import { Book, Order, User, UserType } from '../../material/models/models';
+
+
+@Injectable({
+  providedIn: 'root',
+})
+export class ApiService {
+  baseUrl: string = 'https://localhost:7178/api/Library/';
+  userstatus: Subject<string> = new Subject();
+
+  constructor(private http: HttpClient, private jwt: JwtHelperService) { }
+
+
+    register(user: any) {
+       return this.http.post(this.baseUrl + 'Register', user, {
+        responseType: 'text',
+      });
+  }
+
+  login(info: any){
+    let pamrams = new HttpParams()
+    .append('email', info.email)
+    .append('password', info.password);
+
+    return this.http.get(this.baseUrl + 'Login',{
+      params: pamrams,
+      responseType: 'text',
+    });
+  }
+  isLoggedIn(): boolean {
+    if (
+      localStorage.getItem('access_token') !== null &&
+      !this.jwt.isTokenExpired()
+    )
+      return true;
+    return false;
+  }
+
+  getUserInfo(): User | null {
+    if (!this.isLoggedIn()) return null;
+    var decodedToken = this.jwt.decodeToken();
+    var user: User = {
+      id: decodedToken.id,
+      firstName: decodedToken.firstName,
+      lastName: decodedToken.lastName,
+      email: decodedToken.email,
+      mobileNumber: decodedToken.mobileNumber,
+      userType: UserType[decodedToken.userType as keyof typeof UserType],
+      accountStatus: decodedToken.accountStatus,
+      createdDate: decodedToken.created,
+      password: '',
+    };
+    return user;
+
+  }
+  logout() {
+    localStorage.removeItem('access_token');
+    this.userstatus.next('loggedoff');
+  }
+
+  getBooks(){
+    return this.http.get<Book[]>(this.baseUrl + 'GetBooks');
+  }
+
+  orderBook(book: Book) {
+    let userId = this.getUserInfo()!.id;
+    let params = new HttpParams ()
+    .append('userId', userId)
+    .append("bookId",book.id);
+
+    return this. http.post(this.baseUrl + "OrderBook", null,{
+      params: params,
+      responseType: 'text',
+    });
+  }
+
+  getOrdersOfUser(userId: number) {
+    let params = new HttpParams().append("userId", userId);
+    return this.http.get<any>(this.baseUrl + 'GetOrdersOfUser',{
+      params: params,
+    })
+    .pipe(
+      map((orders) => {
+        let newOrders = orders.map((order: any) =>{
+          let newOrders: Order ={
+            id: order.id,
+            userId: order.userId,
+            userName: order.user.firstName + "" + order.user.lastName,
+            bookId: order.bookId,
+            bookTitle: order.bookTitle,
+            orderDate: order.orderDate,
+            returned: order.returned,
+            returnedDate: order.returnedDate,
+            finePaid: order.finepiad,
+          };
+        });
+      })
+    );
+  }
+}

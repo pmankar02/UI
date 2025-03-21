@@ -6,7 +6,8 @@
 
 <mat-nav-list>
     @for (item of navItems; track navItems) {
-        <a mat-list-item routerLink="/{{item.Link}}" routerLinkActive="active-link">{{item.value}}
+        <a mat-list-item routerLink="/{{item.Link}}" routerLinkActive="active-link">
+            {{item.value}}
             
         </a>
     }

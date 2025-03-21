@@ -7,13 +7,13 @@ import { PageSideNavComponent } from './components/page-side-nav/page-side-nav.c
 import { RouterModule } from '@angular/router';
 import { PageNotFoundComponent } from './components/page-not-found/page-not-found.component';
 import { ReactiveFormsModule } from '@angular/forms';
-
+import { HttpClientModule } from '@angular/common/http';
 
 
 
 @NgModule({
   declarations: [PageHeaderComponent, PageFooterComponent, PageSideNavComponent, PageNotFoundComponent,],
-  imports: [CommonModule, MaterialModule,RouterModule, ReactiveFormsModule],
+  imports: [CommonModule, HttpClientModule, MaterialModule, RouterModule, ReactiveFormsModule],
   exports: [CommonModule, 
             MaterialModule, 
             PageHeaderComponent, 
