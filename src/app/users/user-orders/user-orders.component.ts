@@ -35,7 +35,8 @@ columnsForCompletedReturns: string[] = [
     let userId = this.apiService.getUserInfo()!.id;
     apiService.getOrdersOfUser(userId).subscribe({
       next:(res: Order[]) => {
-        console.log(res);
+        this.pendingReturns = res.filter((o) => !o.returned);
+        this.completedReturns = res.filter((o) => !o.returned);
       },
     });
   }

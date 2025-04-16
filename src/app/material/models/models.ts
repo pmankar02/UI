@@ -53,6 +53,6 @@ export interface Order {
     bookTitle: string;
     orderDate: string;
     returned: boolean;
-    returnedDate: string | null;
+    returnDate: string | null;
     finePaid: number;
 }

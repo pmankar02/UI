@@ -86,18 +86,20 @@ export class ApiService {
     .pipe(
       map((orders) => {
         let newOrders = orders.map((order: any) =>{
-          let newOrders: Order ={
+          let newOrder: Order = {
             id: order.id,
             userId: order.userId,
-            userName: order.user.firstName + "" + order.user.lastName,
+            userName: order.user.firstName + ' ' + order.user.lastName,
             bookId: order.bookId,
-            bookTitle: order.bookTitle,
+            bookTitle: order.book.title,
             orderDate: order.orderDate,
             returned: order.returned,
-            returnedDate: order.returnedDate,
+            returnDate: order.returnDate,
             finePaid: order.finepiad,
           };
+          return newOrder;
         });
+        return newOrders;
       })
     );
   }
