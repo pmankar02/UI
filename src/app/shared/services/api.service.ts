@@ -103,4 +103,16 @@ export class ApiService {
       })
     );
   }
+
+  getFineToPay(order: Order) {
+    let today = new Date();
+    let orderDate = new Date(Date.parse (order.orderDate));
+    orderDate.setDate(orderDate.getDate() + 10);
+    if (orderDate.getTime() < today.getTime()) {
+      var diff = today.getTime() - orderDate.getTime();
+      let days = Math.floor(diff / (1000 * 86400));
+      return days * 50;
+    }
+    return 0;
+  }
 }

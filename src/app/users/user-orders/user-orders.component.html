@@ -5,6 +5,9 @@
             <!-- Pending returns list goes here -->
         </mat-card-content>
     </mat-card>
+
+    @if (pendingReturns.length > 0) {
+
     <table mat-table [dataSource]=" pendingReturns">
         <!-- order Id colums -->
          <ng-container matColumnDef="orderId">
@@ -25,31 +28,40 @@
         </ng-container>
 
         <!--  order date colums -->
-        <ng-container matColumnDef="orederDate">
+        <ng-container matColumnDef="orderDate">
             <th mat-header-cell *matHeaderCellDef>Order Date</th>
-            <td mat cell *matCellDef="let element"> {{ element.orederDate  | date: "DD-MM-YYYY" }}</td>
+            <td mat cell *matCellDef="let element"> {{ element.orderDate  | date: "dd-MM-YYYY" }}</td>
         </ng-container>
 
         <!--  fine Paid colums -->
         <ng-container matColumnDef="fineToPay">
             <th mat-header-cell *matHeaderCellDef>Fine To Pay</th>
-            <td mat cell *matCellDef="let element"> {{100}}</td>
+            <td mat cell *matCellDef="let element"> {{getFineToPay(element)}}</td>
         </ng-container>
 
         <tr mat-header-row *matHeaderRowDef="columnsForPendingReturns"></tr>
         <tr mat-row *matRowDef="let row; columns: columnsForPendingReturns">
 
         </tr>
-    </table>
+    </table>}
+    @else {
+        <mat-card>
+            <mat-card-content>
+            <h2> NO Orders Done Yet!</h2>
+            </mat-card-content>
+        </mat-card>
+    }
 </section>
 
 <section class=" returned">
     <mat-card>
         <mat-card-content>
-            <h3>Returned orders ({{ 1 }})</h3>
+            <h3>Returned orders ({{ completedReturns.length }})</h3>
             <!-- Pending returns list goes here -->
         </mat-card-content>
     </mat-card>
+
+    @if (pendingReturns.length > 0) {
     <table mat-table [dataSource]="completedReturns">
         <!-- order Id colums -->
          <ng-container matColumnDef="orderId">
@@ -93,5 +105,12 @@
         <tr mat-row *matRowDef="let row; columns: columnsForCompletedReturns">
 
         </tr>
-    </table>
+    </table>}
+    @else {
+        <mat-card>
+            <mat-card-content>
+            <h2> NO Orders Done Yet!</h2>
+            </mat-card-content>
+        </mat-card>
+    }
 </section>

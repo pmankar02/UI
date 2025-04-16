@@ -27,7 +27,7 @@ export class PageSideNavComponent {
       apiService.userstatus.subscribe({
         next: (status) => {
           if (status == "loggedIn"){
-            router.navigateByUrl('/my-orders');
+            router.navigateByUrl('/profile');
             let user = apiService.getUserInfo();
             if (user != null){
               if (user.userType == UserType.ADMIN) {
