@@ -51,8 +51,9 @@ export class ApiService {
       mobileNumber: decodedToken.mobileNumber,
       userType: UserType[decodedToken.userType as keyof typeof UserType],
       accountStatus: decodedToken.accountStatus,
-      createdDate: decodedToken.created,
+      createdOn: decodedToken.created,
       password: '',
+      createdDate: ''
     };
     return user;
 

@@ -2,6 +2,7 @@ import { Component } from '@angular/core';
 import { ApiService } from '../../shared/services/api.service';
 import { UserType } from '../../material/models/models';
 
+
 export interface TableElement {
   name: string;
   value: string;
@@ -24,8 +25,9 @@ export class ProfileComponent {
     { name: "Email", value: `${user.email}`}, 
     { name: "mobile", value: `${user.mobileNumber}` },
     { name: "Account Status", value: `${user.accountStatus}` },
-    { name : "Created Date", value:`${user.createdDate}` },
-    { name: "Type", value: `${UserType[user.userType]}` },
+    { name: "Created On", value: `${user.createdOn}`},
+    { name: "Type", value: `${UserType[user.userType]}`},
+    
 
   ];
  }
