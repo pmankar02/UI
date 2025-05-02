@@ -1,0 +1,56 @@
+import { Component } from '@angular/core';
+import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { BookCategory } from '../../material/models/models';
+import { ApiService } from '../../shared/services/api.service';
+import { MatSnackBar } from '@angular/material/snack-bar';
+import { Title } from '@angular/platform-browser';
+
+@Component({
+  selector: 'maintenance',
+  standalone: false,
+  templateUrl: './maintenance.component.html',
+  styleUrl: './maintenance.component.scss'
+})
+export class MaintenanceComponent {
+newCategory: FormGroup;
+newBook: FormGroup;
+
+constructor(
+  fb: FormBuilder,
+  private apiService: ApiService,
+  private snackbar: MatSnackBar,
+
+){
+  this .newCategory = fb.group({
+    category: fb.control('',[Validators.required]),
+    subCategory: fb.control('',[Validators.required]),
+  });
+
+  this .newBook = fb.group({
+    Title: fb.control("",[Validators.required]),
+    author: fb.control("",[Validators.required]),
+    price: fb.control(0,[Validators.required]),
+    category: fb.control(-1,[Validators.required]),
+  });
+
+  }
+
+  addNewCategory(){
+    let bookCategory: BookCategory = {
+      id: 0,
+      category: this.newCategory.get("category")?.value,
+      subCategory: this.newCategory.get("subCategory")?.value,
+    };
+    this.apiService.addNewCategory(bookCategory).subscribe({
+      next: (res) => {
+        if (res === 'cannot insert') {
+          this.snackbar.open('Already Exists', 'OK');
+        } else {
+           this.snackbar.open('INSERTED','OK');
+        }
+      },
+
+
+    });
+  }
+}

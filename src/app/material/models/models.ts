@@ -1,5 +1,5 @@
 export interface User {
-    createdOn: any;
+    createdOn: string;
     id: number;
     firstName: string;
     lastName: string;
@@ -8,7 +8,7 @@ export interface User {
     password: string;
     userType: UserType;
     accountStatus: AccountStatus;
-    createdDate: string;
+    
 }
 
 export enum AccountStatus {

@@ -2,7 +2,7 @@ import { HttpClient, HttpParams } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { JwtHelperService } from '@auth0/angular-jwt';
 import { map, Subject } from 'rxjs';
-import { Book, Order, User, UserType } from '../../material/models/models';
+import { Book, BookCategory, Order, User, UserType } from '../../material/models/models';
 
 
 @Injectable({
@@ -51,9 +51,8 @@ export class ApiService {
       mobileNumber: decodedToken.mobileNumber,
       userType: UserType[decodedToken.userType as keyof typeof UserType],
       accountStatus: decodedToken.accountStatus,
-      createdOn: decodedToken.created,
+      createdOn: decodedToken.createdOn,
       password: '',
-      createdDate: ''
     };
     return user;
 
@@ -115,5 +114,13 @@ export class ApiService {
       return days * 50;
     }
     return 0;
+  }
+
+  addNewCategory(category: BookCategory){
+    return this.http.post(this.baseUrl + 'AddCategory', category, {
+      responseType: 'text',
+    });
+
+
   }
 }
