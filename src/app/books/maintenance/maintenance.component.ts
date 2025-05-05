@@ -5,6 +5,11 @@ import { ApiService } from '../../shared/services/api.service';
 import { MatSnackBar } from '@angular/material/snack-bar';
 import { Title } from '@angular/platform-browser';
 
+export interface categoryOptions {
+  displayValue: string;
+  value: number;
+}
+
 @Component({
   selector: 'maintenance',
   standalone: false,
@@ -14,6 +19,7 @@ import { Title } from '@angular/platform-browser';
 export class MaintenanceComponent {
 newCategory: FormGroup;
 newBook: FormGroup;
+categoryOptions: categoryOptions[] = [];
 
 constructor(
   fb: FormBuilder,
