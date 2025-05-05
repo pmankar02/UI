@@ -42,8 +42,13 @@
             <input matInput formControlName="price">
         </mat-form-field>
 
-        <mat-form-field color="accent" class="category-select"></mat-form-field>
-        <mat-label>Category</mat-label>
+        <mat-form-field color="accent" class="category-select">
+            <mat-label>Category</mat-label>
+            <mat-select formControlName="category">
+                <mat-option>
 
+                </mat-option>
+            </mat-select>
+        </mat-form-field>
     </mat-card-content>
 </mat-card>
