@@ -75,10 +75,10 @@ constructor(
   addNewBook(){
     let book: Book = {
       id: 0,
-      title: this.newBook.get("Title")?.value,
-      author: this.newBook.get("author")?.value,
-      bookCategoryId: this.newBook.get("category")?.value,
-      price: this.newBook.get("price")?.value,
+      title: this.newBook.get('Title')?.value,
+      author: this.newBook.get('author')?.value,
+      bookCategoryId: this.newBook.get('category')?.value,
+      price: this.newBook.get('price')?.value,
       bookCategory: {id: 0, category: '', subCategory: ''},
       ordered: false,
     };
