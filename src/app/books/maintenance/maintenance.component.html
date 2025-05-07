@@ -44,14 +44,18 @@
 
         <mat-form-field color="accent" class="category-select">
             <mat-label>Category</mat-label>
-            <mat-select formControlName="category">
+            <mat-select formControlName="category" #categorySelect>
                 @for (option of categoryOptions; track categoryOptions) {
                     <mat-option [value]="option.value">
-                        {{ option .displayValue}}
+                        {{ option .displayValue | titlecase }}
                     </mat-option>
-
                 }
             </mat-select>
         </mat-form-field>
+
+        <button mat-stroked-button color="accent" [disabled] ="newBook.invalid || categorySelect.empty"(click)= "addNewBook()">
+            <span>Add</span>
+        </button>
     </mat-card-content>
 </mat-card>
+

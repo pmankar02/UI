@@ -120,7 +120,13 @@ export class ApiService {
     return this.http.post(this.baseUrl + 'AddCategory', category, {
       responseType: 'text',
     });
-
-
-  }
+ }
+ getCategories() {
+  return this.http.get<BookCategory[]>(this.baseUrl + 'GetCategories');
+ }
+ addBook(book: Book) {
+  return this.http.post(this.baseUrl + "AddBook", book,{
+    responseType: 'text',
+  });
+ }
 }
