@@ -75,7 +75,7 @@ constructor(
   addNewBook(){
     let book: Book = {
       id: 0,
-      title: this.newBook.get('Title')?.value,
+      title: this.newBook.get('title')?.value,
       author: this.newBook.get('author')?.value,
       bookCategoryId: this.newBook.get('category')?.value,
       price: this.newBook.get('price')?.value,
