@@ -53,9 +53,11 @@
             </mat-select>
         </mat-form-field>
 
-        <button mat-stroked-button color="accent" [disabled]="newBook.invalid || categorySelect.empty"(click)="addNewBook()">
-            <span>Add</span>
-        </button>
+        <button mat-stroked-button color="accent"
+        [disabled]="newBook.invalid || categorySelect.empty"
+        (click)="addNewBook()">
+    <span>Add</span>
+</button>
     </mat-card-content>
 </mat-card>
 
