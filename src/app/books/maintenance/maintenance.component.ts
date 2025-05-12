@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
 import { Book, BookCategory } from '../../material/models/models';
 import { ApiService } from '../../shared/services/api.service';
 import { MatSnackBar } from '@angular/material/snack-bar';
@@ -19,6 +19,7 @@ export interface categoryOptions {
 export class MaintenanceComponent {
 newCategory: FormGroup;
 newBook: FormGroup;
+deleteBook: FormControl;
 categoryOptions: categoryOptions[] = [];
 
 
@@ -35,7 +36,7 @@ constructor(
   });
 
   this .newBook = fb.group({
-    Title: fb.control("",[Validators.required]),
+    title: fb.control("",[Validators.required]),
     author: fb.control("",[Validators.required]),
     price: fb.control(0,[Validators.required]),
     category: fb.control(-1,[Validators.required]),
@@ -48,10 +49,12 @@ constructor(
           value: c.id,
           displayValue: `${c.category} / ${c.subCategory}`
         });
-      })
-    }
+      });
+    },
 
-  })
+  });
+
+  this.deleteBook = fb.control("", [Validators.required]);
 }
 
   addNewCategory(){
@@ -72,7 +75,7 @@ constructor(
 
     });
   }
-  addNewBook(){
+  addNewBook() {
     let book: Book = {
       id: 0,
       title: this.newBook.get('title')?.value,
@@ -84,7 +87,7 @@ constructor(
     };
 
     this.apiService.addBook(book).subscribe({
-      next:(res) => {
+      next: (res) => {
         if (res === 'inserted') this.snackbar.open('Book Added', 'OK');
       },
     });

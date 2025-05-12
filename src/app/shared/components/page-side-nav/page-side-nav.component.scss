@@ -8,6 +8,10 @@ mat-card {
         letter-spacing:  3px;
         text-align: center;
     }
+
+    .mat-mdc-card-content:first-child {
+        padding-top: 0;
+    }
 }
 
 mat-nav-list {
@@ -18,4 +22,6 @@ margin-top: 1rem;
             background-color: rgba($color: #fff, $alpha: 0.2);
         }
     }
+
+   
 }
