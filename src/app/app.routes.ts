@@ -6,6 +6,7 @@ import { BookStoreComponent } from './books/book-store/book-store.component';
 import { UserOrdersComponent } from './users/user-orders/user-orders.component';
 import { ProfileComponent } from './users/profile/profile.component';
 import { MaintenanceComponent } from './books/maintenance/maintenance.component';
+import { ReturnBookComponent } from './books/return-book/return-book.component';
 
 
 export const routes: Routes = [
@@ -14,6 +15,7 @@ export const routes: Routes = [
     {path: "home", component: BookStoreComponent},
     {path: "my-orders", component: UserOrdersComponent},
     {path: "maintenance", component: MaintenanceComponent},
+    {path: "return-book", component: ReturnBookComponent},
     {path: "profile", component: ProfileComponent},
     {path : "**", component: PageNotFoundComponent },
 ];

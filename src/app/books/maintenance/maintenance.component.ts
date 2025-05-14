@@ -92,4 +92,15 @@ constructor(
       },
     });
   }
-} 
+  deleteExistingBook() {
+    let id = this.deleteBook.value;
+    this.apiService.deleteBook(id).subscribe({
+      next: (res) => {
+        if (res === 'deleted') 
+          this.snackbar.open('Book  has been Deleted!', 'OK');
+      },
+        error: (err) => this.snackbar.open('Book does not Exist!', 'OK'),
+        });
+      } 
+  }
+ 

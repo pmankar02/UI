@@ -9,6 +9,9 @@ import { Book, BookCategory, Order, User, UserType } from '../../material/models
   providedIn: 'root',
 })
 export class ApiService {
+  getFine(order: Order): number | null {
+    throw new Error('Method not implemented.');
+  }
   baseUrl: string = 'https://localhost:7178/api/Library/';
   userstatus: Subject<string> = new Subject();
 
@@ -118,15 +121,22 @@ export class ApiService {
 
   addNewCategory(category: BookCategory){
     return this.http.post(this.baseUrl + 'AddCategory', category, {
+
       responseType: 'text',
     });
- }
- getCategories() {
-  return this.http.get<BookCategory[]>(this.baseUrl + 'GetCategories');
- }
- addBook(book: Book) {
-  return this.http.post(this.baseUrl + "AddBook", book, {
-    responseType: 'text',
-  });
- }
+  }   
+  getCategories() {
+    return this.http.get<BookCategory[]>(this.baseUrl + 'GetCategories');
+  } 
+  addBook(book: Book) {
+    return this.http.post(this.baseUrl + "AddBook", book, {
+      responseType: 'text',
+    });
+  }
+  deleteBook(id: number) {
+    return this.http.delete(this.baseUrl + 'DeleteBook', {
+      params: new HttpParams().append('id', id),
+      responseType: 'text',
+    });
+  }
 }

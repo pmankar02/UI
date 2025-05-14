@@ -69,7 +69,13 @@
     <mat-card-content>
         <mat-form-field>
             <mat-label>Book ID</mat-label>
+            <input matInput [formControl]="deleteBook">
         </mat-form-field>
+
+        <button mat-stroked-button color="accent" [disabled]="deleteBook.invalid"
+            (click)="deleteExistingBook()">
+            <span>Delete</span>
+        </button>
     </mat-card-content>
 </mat-card>
 
