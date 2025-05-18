@@ -46,4 +46,18 @@ export class ReturnBookComponent {
     });
   }
 
+  returnBook(){
+      let userId = this.returnForm.get('userId')?.value;
+      let bookId = this.returnForm.get('bookId')?.value;
+
+      this.apiService.returnBook(userId, bookId, this .fineTopay!).subscribe({
+        next: (res) => {
+          if (res === 'returned')
+            this.snackbar.open('Book has been returned successfully', 'OK');
+          else this.snackbar.open('Book has not been returned', 'OK');
+        },
+      });
+  }
+  
+
 }

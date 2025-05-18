@@ -15,6 +15,7 @@ export enum AccountStatus {
     UNAPROOVED,
     APROOVED,
     BLOCKED,
+    ACTIVE,
 }
 
 export enum UserType {
