@@ -10,6 +10,7 @@ import { ReturnBookComponent } from './books/return-book/return-book.component';
 import { ApprovalRequestsComponent } from './users/approval-requests/approval-requests.component';
 
 
+
 export const routes: Routes = [
     {path: "login", component: LoginComponent},
     {path: "register",component: RegisterComponent},

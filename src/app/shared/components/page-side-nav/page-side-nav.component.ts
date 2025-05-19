@@ -39,7 +39,7 @@ export class PageSideNavComponent {
                 {value: 'Maintenance', Link: '/maintenance'},
                 {value: 'Return Book', Link: '/return-book'},
                 {value: 'View Users', Link: '/view-users'},
-                {value: 'Aprooval Requests', Link: '/aprooval-requests'},
+                {value: 'Approval Requests', Link: '/approval-requests'},
                 {value: 'All Orders', Link: '/all-orders'},
                 {value: 'My Orders', Link: '/my-orders'},
 

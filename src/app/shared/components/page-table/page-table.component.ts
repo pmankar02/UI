@@ -1,13 +1,13 @@
 import { Component, Input } from '@angular/core';
-import { AccountStatus,User, UserType } from '../../../material/models/models';
+import { AccountStatus, User, UserType } from '../../../material/models/models';
 
 @Component({
-  selector: 'pagetable',
+  selector: 'page-table',
   standalone: false,
-  templateUrl: './pagetable.component.html',
-  styleUrl: './pagetable.component.scss'
+  templateUrl: './page-table.component.html',
+  styleUrl: './page-table.component.scss'
 })
-export class PagetableComponent {
+export class PageTableComponent {
   @Input()
   columns: string[] = ['col1'];
 
@@ -18,12 +18,11 @@ export class PagetableComponent {
       firstName: 'John Doe',
       lastName: 'Doe',
       accountStatus: AccountStatus.ACTIVE,
-      createdOn: 'pm',
-      email: 'pp',
-      mobileNumber: '123',
-      password: '456',
+      createdOn: 'dd',
+      email: 'ddd',
+      mobileNumber: '1234',
+      password: '',
       userType: UserType.ADMIN
     },
   ];
-
 }

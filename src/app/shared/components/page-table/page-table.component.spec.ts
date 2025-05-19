@@ -1,18 +1,18 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { PagetableComponent } from './pagetable.component';
+import { PageTableComponent } from './page-table.component';
 
-describe('PagetableComponent', () => {
-  let component: PagetableComponent;
-  let fixture: ComponentFixture<PagetableComponent>;
+describe('PageTableComponent', () => {
+  let component: PageTableComponent;
+  let fixture: ComponentFixture<PageTableComponent>;
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [PagetableComponent]
+      declarations: [PageTableComponent]
     })
     .compileComponents();
 
-    fixture = TestBed.createComponent(PagetableComponent);
+    fixture = TestBed.createComponent(PageTableComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });

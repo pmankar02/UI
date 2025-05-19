@@ -6,11 +6,17 @@ import { ApprovalRequestsComponent } from './approval-requests/approval-requests
 
 
 
+
+
+
 @NgModule({
   declarations: [
     UserOrdersComponent,
     ProfileComponent,
-    ApprovalRequestsComponent
+    ApprovalRequestsComponent,
+   
+    
+    
   ],
   imports: [SharedModule],
 })
