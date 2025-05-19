@@ -9,7 +9,7 @@ import { AccountStatus, User, UserType } from '../../../material/models/models';
 })
 export class PageTableComponent {
   @Input()
-  columns: string[] = ['col1'];
+  columns: string[] = ['userId'];
 
   @Input()
   dataSource: User[] = [
