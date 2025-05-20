@@ -45,5 +45,7 @@ export class AllOrdersComponent {
       },
     });
   }
+    sendEmail(){}
 
+    blockUsers(){}
 }

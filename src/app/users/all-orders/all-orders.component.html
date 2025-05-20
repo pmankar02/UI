@@ -2,10 +2,10 @@
     <mat-card-content>
         <h3> Orders With Pending Returns</h3>
 
-        <button mat-raised-button color="accent">
+        <button mat-raised-button color="accent" (click)="sendEmail()">
             Send Email About pending Returns
         </button>
-        <button mat-raised-button color="accent">
+        <button mat-raised-button color="accent" (click)="blockUsers()">
             Block Overdue Users
         </button>
     </mat-card-content>
