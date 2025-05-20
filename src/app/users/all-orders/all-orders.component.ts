@@ -11,7 +11,7 @@ import { MatSnackBar } from '@angular/material/snack-bar';
 })
 export class AllOrdersComponent {
   columnsForPendingReturns: string[] = [
-    'orderId',
+    'Id',
     'userIdForOrder',
     'userNameForOrder',
     'bookId',
@@ -21,13 +21,13 @@ export class AllOrdersComponent {
   ];
 
   columnsForCompletedReturns: string[] = [
-    'orderId',
-    'userId',
+    'Id',
+    'userIdForOrder',
     'userNameForOrder',
     'bookId',
     'orderDate',
     'returnedDate',
-    'fineToPay',
+    'finepaid',
   ];
 
   ordersWithPendingReturns: Order[] = [];

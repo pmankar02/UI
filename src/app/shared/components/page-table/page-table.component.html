@@ -44,9 +44,9 @@
     </ng-container>
 
         <!--Order-->>
-    <ng-container matColumnsDef="orderId">
+    <ng-container matColumnsDef="Id">
         <th mat-header-cell *matHeaderCellDef>Order ID</th>
-        <td mat-cell *matCellDef="let element"> {{element.id}}</td>
+        <td mat-cell *matCellDef="let element"> {{element.Id}}</td>
     </ng-container>
 
     <ng-container matColumnsDef="userIdForOrder">
@@ -71,7 +71,7 @@
 
     <ng-container matColumnsDef="fineToPay">
         <th mat-header-cell *matHeaderCellDef> Fine To Pay</th>
-        <td mat-cell *matCellDef="let element">100</td>
+        <td mat-cell *matCellDef="let element">{{getFineTopay}}</td>
     </ng-container>
 
     <ng-container matColumnsDef="returnedDate">
