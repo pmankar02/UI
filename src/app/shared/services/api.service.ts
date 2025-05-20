@@ -148,4 +148,37 @@ export class ApiService {
       responseType: 'text'
     });
   }
+  getUsers() {
+    return this.http.get<User[]>(this.baseUrl + 'GetUsers');
+  }
+
+  approveRequest(userId: number) {
+    return this .http.get(this.baseUrl + 'ApproveRequest', {
+      params: new HttpParams().append('userId', userId),
+      responseType: 'text',
+    });
+  }
+
+  getOrders() {
+    return this.http.get<any>(this.baseUrl + "GetOrders").pipe(
+      map((orders) => {
+        let newOrders = orders.map((order: any) =>{
+          let newOrder: Order = {
+            id: order.id,
+            userId: order.userId,
+            userName: order.user.firstName + ' ' + order.user.lastName,
+            bookId: order.bookId,
+            bookTitle: order.book.title,
+            orderDate: order.orderDate,
+            returned: order.returned,
+            returnDate: order.returnDate,
+            finePaid: order.finepiad,
+          };
+          return newOrder;
+        });
+        return newOrders;
+      })
+    );
+  }
+
 }

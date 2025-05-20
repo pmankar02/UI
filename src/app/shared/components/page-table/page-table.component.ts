@@ -1,4 +1,4 @@
-import { Component, Input } from '@angular/core';
+import { Component, EventEmitter, Input, Output } from '@angular/core';
 import { AccountStatus, User, UserType } from '../../../material/models/models';
 
 @Component({
@@ -9,20 +9,11 @@ import { AccountStatus, User, UserType } from '../../../material/models/models';
 })
 export class PageTableComponent {
   @Input()
-  columns: string[] = ['userId'];
+  columns: string[] = [];
 
   @Input()
-  dataSource: User[] = [
-    {
-      id: 1,
-      firstName: 'John Doe',
-      lastName: 'Doe',
-      accountStatus: AccountStatus.ACTIVE,
-      createdOn: 'dd',
-      email: 'ddd',
-      mobileNumber: '1234',
-      password: '',
-      userType: UserType.ADMIN
-    },
-  ];
+  dataSource: any[] = [];
+
+  @Output()
+  approve = new EventEmitter<User>();
 }

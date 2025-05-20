@@ -1,0 +1,28 @@
+<mat-card>
+    <mat-card-content>
+        <h3> Orders With Pending Returns</h3>
+
+        <button mat-raised-button color="accent">
+            Send Email About pending Returns
+        </button>
+        <button mat-raised-button color="accent">
+            Block Overdue Users
+        </button>
+    </mat-card-content>
+</mat-card>
+
+
+<page-table [columns]="columnsForPendingReturns" 
+            [dataSource]="ordersWithPendingReturns">
+</page-table>
+
+<mat-card>
+    <mat-card-content>
+        <h3>Orders With Completed Returns</h3>
+    </mat-card-content>
+</mat-card>
+
+<page-table [columns]="columnsForCompletedReturns" 
+            [dataSource]="ordersWithCompletedReturns">
+
+</page-table>
