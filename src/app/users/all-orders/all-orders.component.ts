@@ -12,7 +12,7 @@ import { MatSnackBar } from '@angular/material/snack-bar';
 export class AllOrdersComponent {
   columnsForPendingReturns: string[] = [
     'orderId',
-    'userId',
+    'userIdForOrder',
     'userNameForOrder',
     'bookId',
     'orderDate',
