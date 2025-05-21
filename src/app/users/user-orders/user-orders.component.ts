@@ -23,7 +23,7 @@ columnsForCompletedReturns: string[] = [
     'bookId',
     'bookTitle',
     'orderDate',
-    'returnDate',
+    'returnedDate',
     'finePaid',
   ];
 
