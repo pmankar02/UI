@@ -22,6 +22,7 @@ export class AllOrdersComponent {
 
   columnsForCompletedReturns: string[] = [
     'orderId',
+    'userId',
     'userIdForOrder',
     'userNameForOrder',
     'bookId',

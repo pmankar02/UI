@@ -41,7 +41,7 @@ columnsForCompletedReturns: string[] = [
     });
   }
     getFineToPay(order: Order) {
-      return this .apiService.getFineToPay(order)
+      return this .apiService.getFine(order)
       
     }
 }
