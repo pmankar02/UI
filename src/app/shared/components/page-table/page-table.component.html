@@ -41,12 +41,39 @@
                 Approve
             </button>
         </td>
-    </ng-container>
+        </ng-container>
+
+        <ng-container matColumnDef="mobileNumber">
+        <th mat-header-cell *matHeaderCellDef> Mobile Number</th>
+        <td mat-cell *matCellDef="let element"> 
+            {{element.mobileNumber}} 
+        </td>
+        </ng-container>
+
+        <ng-container matColumnDef="accountStatus">
+        <th mat-header-cell *matHeaderCellDef>Account Status</th>
+        <td mat-cell *matCellDef="let element"> 
+            {{ getAccountStatus(element.accountStatus)}} 
+        </td>
+        </ng-container>
+
+        <ng-container matColumnDef="unblock">
+        <th mat-header-cell *matHeaderCellDef> Unblock</th>
+        <td mat-cell *matCellDef="let element"> 
+            <button mat-raised-button color="accent"
+                [disabled]="getAccountStatus(element.accountStatus) != 'Blocked'"
+                (click)="this.unblock.emit(element)">
+                Unblock
+            </button> 
+        </td>
+        </ng-container>
+
+        
 
         <!--Order-->>
-    <ng-container matColumnsDef="Id">
+    <ng-container matColumnsDef="id">
         <th mat-header-cell *matHeaderCellDef>Order ID</th>
-        <td mat-cell *matCellDef="let element"> {{element.Id}}</td>
+        <td mat-cell *matCellDef="let element"> {{element.id}}</td>
     </ng-container>
 
     <ng-container matColumnsDef="userIdForOrder">
@@ -63,6 +90,13 @@
         <th mat-header-cell *matHeaderCellDef>Book ID</th>
         <td mat-cell *matCellDef="let element"> {{element.bookId}}</td>
     </ng-container>
+
+    
+    <ng-container matColumnsDef="bookTitle">
+        <th mat-header-cell *matHeaderCellDef>Book Title</th>
+        <td mat-cell *matCellDef="let element"> {{element.bookTitle}}</td>
+    </ng-container>
+
     
     <ng-container matColumnsDef="orderDate">
         <th mat-header-cell *matHeaderCellDef>Order Date</th>

@@ -18,11 +18,18 @@ export class PageTableComponent {
   @Output()
   approve = new EventEmitter<User>();
 
+  @Output()
+  unblock = new EventEmitter<User>();
+
 
   getFineTopay(order: Order) {
     return this.apiService.getFine(order);
     return this 
   }
-  constructor(private apiService: ApiService) { }
+  constructor(private apiService: ApiService) {}
+
+  getAccountStatus(input: AccountStatus) {
+    return AccountStatus[input];
+  }
 }
 

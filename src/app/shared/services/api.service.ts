@@ -180,5 +180,23 @@ export class ApiService {
       })
     );
   }
+  
+  sendEmail() {
+    return this.http.get(this.baseUrl + "SendEmailForPendingReturns", {
+    responseType: 'text',
+    });
+  }
 
+  blockUser() {
+    return this .http.get(this .baseUrl + 'BlockFineOverdueUsers',{
+      responseType: 'text',
+    });
+  }
+
+  unblockUser(userId: number) {
+    return this.http.get(this.baseUrl + 'Unblock', {
+      params: new HttpParams().append('userId', userId),
+      responseType: "text",
+    });
+  }
 }

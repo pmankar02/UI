@@ -11,7 +11,7 @@ import { MatSnackBar } from '@angular/material/snack-bar';
 })
 export class AllOrdersComponent {
   columnsForPendingReturns: string[] = [
-    'Id',
+    'orderid',
     'userIdForOrder',
     'userNameForOrder',
     'bookId',
@@ -21,7 +21,7 @@ export class AllOrdersComponent {
   ];
 
   columnsForCompletedReturns: string[] = [
-    'Id',
+    'orderid',
     'userIdForOrder',
     'userNameForOrder',
     'bookId',
@@ -29,7 +29,7 @@ export class AllOrdersComponent {
     'returnedDate',
     'finepaid',
   ];
-
+  showProgressBar: boolean = false;
   ordersWithPendingReturns: Order[] = [];
   ordersWithCompletedReturns: Order[] = [];
 
@@ -45,7 +45,39 @@ export class AllOrdersComponent {
       },
     });
   }
-    sendEmail(){}
+    sendEmail(){
+      this.showProgressBar = true;
+      this.apiService.sendEmail().subscribe({
+        next: (res) => {
+          if (res === 'send') {
+            
+            this.snackBar.open('Emails have been sent to respected students!',
+              'Ok'
 
-    blockUsers(){}
+            );
+            this.showProgressBar = false;
+          }else {
+            this.snackBar.open('Emails have not been sent!','ok');
+            this.showProgressBar = false;
+          }
+    },
+  });
+}
+
+    blockUsers(){
+      this.showProgressBar = true;
+      this.apiService.blockUser().subscribe({
+        next: (res) => {
+          if (res === 'Blocked') {
+            this.snackBar.open('Eligible Users Account were blocked!', 'Ok');
+            this.showProgressBar = false;
+          }else {
+            this.snackBar.open('Users have not been blocked!','ok');
+            this.showProgressBar = false;
+          }
+
+        },
+      });
+    }
+
 }
