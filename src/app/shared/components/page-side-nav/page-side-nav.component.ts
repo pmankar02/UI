@@ -24,9 +24,9 @@ export class PageSideNavComponent {
       //   {value: 'my orders', Link: 'my-orders'},
       // ];
 
-      apiService.userstatus.subscribe({
-        next: (status) => {
-          if (status == "loggedIn"){
+      apiService.userStatus.subscribe({
+        next: (Status) => {
+          if (Status == "loggedIn"){
             router.navigateByUrl('/profile');
             let user = apiService.getUserInfo();
             if (user != null){
@@ -52,7 +52,7 @@ export class PageSideNavComponent {
               ];
             }
           }
-        } else if (status == 'loggedoff'){
+        } else if (Status == 'loggedoff'){
           this.PanelName = 'Auth Panel';
           router.navigateByUrl('/login');
            this.navItems = [];

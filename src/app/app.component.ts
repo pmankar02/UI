@@ -24,7 +24,7 @@ export class AppComponent implements OnInit {
   
   ngOnInit(): void {
     let status = this.apiService.isLoggedIn() ? 'loggedIn' : 'loggedOff';
-    this.apiService.userstatus.next(status);
+    this.apiService.userStatus.next(status);
   }
   
 }

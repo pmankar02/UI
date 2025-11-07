@@ -24,12 +24,13 @@ export class PageTableComponent {
 
   getFineTopay(order: Order) {
     return this.apiService.getFine(order);
-    return this 
+    
   }
   constructor(private apiService: ApiService) {}
 
   getAccountStatus(input: AccountStatus) {
     return AccountStatus[input];
+    
   }
 }
 

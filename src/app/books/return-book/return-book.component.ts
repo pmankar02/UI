@@ -37,7 +37,7 @@ export class ReturnBookComponent {
       next:(res: Order[]) => {
         if(res.some(o => !o.returned && o.bookId == bookId)){
           let order: Order = res.filter((o) => o.bookId == bookId)[0];
-          this.fineTopay = this.apiService.getFineToPay(order);
+          this.fineTopay = this.apiService.getFine(order);
         }else{
           this.snackbar.open(`User doesn't have Book with ID: ${bookId}`,'OK')
         }

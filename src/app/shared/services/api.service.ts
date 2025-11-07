@@ -1,19 +1,17 @@
 import { HttpClient, HttpParams } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { JwtHelperService } from '@auth0/angular-jwt';
-import { map, Subject } from 'rxjs';
 import { Book, BookCategory, Order, User, UserType } from '../../material/models/models';
+import { Subject,map } from 'rxjs';
 
 
 @Injectable({
   providedIn: 'root',
 })
 export class ApiService {
-  getFine(order: Order): number | null {
-    throw new Error('Method not implemented.');
-  }
   baseUrl: string = 'https://localhost:7178/api/Library/';
-  userstatus: Subject<string> = new Subject();
+  userStatus: Subject<string> = new Subject();
+
 
   constructor(private http: HttpClient, private jwt: JwtHelperService) { }
 
@@ -62,7 +60,7 @@ export class ApiService {
   }
   logout() {
     localStorage.removeItem('access_token');
-    this.userstatus.next('loggedoff');
+    this.userStatus.next('loggedoff');
   }
 
   getBooks(){
@@ -83,7 +81,8 @@ export class ApiService {
 
   getOrdersOfUser(userId: number) {
     let params = new HttpParams().append("userId", userId);
-    return this.http.get<any>(this.baseUrl + 'GetOrdersOfUser',{
+    return this.http.
+    get<any>(this.baseUrl + 'GetOrdersOfUser',{
       params: params,
     })
     .pipe(
@@ -107,7 +106,7 @@ export class ApiService {
     );
   }
 
-  getFineToPay(order: Order) {
+  getFine(order: Order) {
     let today = new Date();
     let orderDate = new Date(Date.parse (order.orderDate));
     orderDate.setDate(orderDate.getDate() + 10);
@@ -193,7 +192,7 @@ export class ApiService {
     });
   }
 
-  unblockUser(userId: number) {
+  unblock(userId: number) {
     return this.http.get(this.baseUrl + 'Unblock', {
       params: new HttpParams().append('userId', userId),
       responseType: "text",

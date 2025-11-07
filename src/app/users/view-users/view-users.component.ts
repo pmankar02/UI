@@ -28,18 +28,17 @@ export class ViewUsersComponent {
         this.users = [];
         res.forEach((r) => this.users.push(r));
       },
-  });
-}
-unblockUser(user: User) {
-  var id = user.id;
-  this.apiService.unblockUser(id).subscribe({ 
-    next: (res) =>{
-      if (res == 'unblocked'){
-      this.snackBar.open('User unblocked successfully', 'OK'); 
-      }else this.snackBar.open('Not unblocked', 'OK');
-    },
-
-});
-}
+    });
+  }
+  unblockUser(user: User) {
+    var id = user.id;
+    this.apiService.unblock(id).subscribe({ 
+      next: (res) => {
+        if (res === 'unblocked'){
+          this.snackBar.open('User unblocked successfully', 'OK'); 
+        }else this.snackBar.open('Not unblocked', 'OK');
+      },
+    });
+  }
 }
 

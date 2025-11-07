@@ -11,7 +11,7 @@ export class PageHeaderComponent {
   name: string = '';
 
   constructor(private apiService: ApiService) {
-    apiService.userstatus.subscribe({
+    apiService.userStatus.subscribe({
       next: res => {
         if (res == 'loggedIn') {
           this.loggedIn =true;

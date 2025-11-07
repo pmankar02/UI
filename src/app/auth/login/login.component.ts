@@ -39,7 +39,7 @@ export class LoginComponent {
           this.snackBar.open('Your account is blocked please go to admin office to unblock','OK');
         else {
           localStorage.setItem('access_token', res);
-          this.apiService.userstatus.next("loggedIn");
+          this.apiService.userStatus.next("loggedIn");
         }
       },
 
