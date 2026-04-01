@@ -89,8 +89,8 @@ export class ApiService {
       map((orders) => {
         let newOrders = orders.map((order: any) =>{
           let newOrder: Order = {
-            id: order.id,
-            userId: order.userId,
+            id: order.Id,
+            userId: order.userid,
             userName: order.user.firstName + ' ' + order.user.lastName,
             bookId: order.bookId,
             bookTitle: order.book.title,
