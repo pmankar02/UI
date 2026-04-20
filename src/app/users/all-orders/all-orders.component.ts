@@ -28,7 +28,7 @@ export class AllOrdersComponent {
     'bookId',
     'orderDate',
     'returnedDate',
-    'finepaid',
+    'finePaid',
   ];
   showProgressBar: boolean = false;
   ordersWithPendingReturns: Order[] = [];

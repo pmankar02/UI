@@ -2,7 +2,8 @@ import { HttpClient, HttpParams } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { JwtHelperService } from '@auth0/angular-jwt';
 import { Book, BookCategory, Order, User, UserType } from '../../material/models/models';
-import { Subject,map } from 'rxjs';
+import { Subject, map, of } from 'rxjs';
+import { catchError } from 'rxjs/operators';
 
 
 @Injectable({
@@ -89,19 +90,23 @@ export class ApiService {
       map((orders) => {
         let newOrders = orders.map((order: any) =>{
           let newOrder: Order = {
-            id: order.Id,
-            userId: order.userid,
-            userName: order.user.firstName + ' ' + order.user.lastName,
-            bookId: order.bookId,
-            bookTitle: order.book.title,
-            orderDate: order.orderDate,
-            returned: order.returned,
-            returnDate: order.returnDate,
-            finePaid: order.finepiad,
+            id: order.id ?? order.Id,
+            userId: order.userId ?? order.userid ?? order.user?.id,
+            userName: order.userName ?? (order.user ? order.user.firstName + ' ' + order.user.lastName : ''),
+            bookId: order.bookId ?? order.book?.id,
+            bookTitle: order.bookTitle ?? order.book?.title,
+            orderDate: order.orderDate ?? order.OrderDate,
+            returned: order.returned ?? false,
+            returnDate: order.returnDate ?? null,
+            finePaid: order.finePaid ?? order.finepaid ?? order.finepiad ?? 0,
           };
           return newOrder;
         });
         return newOrders;
+      }),
+      catchError((err) => {
+        console.error('GetOrdersOfUser failed', err);
+        return of([] as Order[]);
       })
     );
   }
@@ -147,9 +152,7 @@ export class ApiService {
       responseType: 'text'
     });
   }
-  getUsers() {
-    return this.http.get<User[]>(this.baseUrl + 'GetUsers');
-  }
+ 
 
   approveRequest(userId: number) {
     return this .http.get(this.baseUrl + 'ApproveRequest', {
@@ -163,19 +166,32 @@ export class ApiService {
       map((orders) => {
         let newOrders = orders.map((order: any) =>{
           let newOrder: Order = {
-            id: order.id,
-            userId: order.userId,
-            userName: order.user.firstName + ' ' + order.user.lastName,
-            bookId: order.bookId,
-            bookTitle: order.book.title,
-            orderDate: order.orderDate,
-            returned: order.returned,
-            returnDate: order.returnDate,
-            finePaid: order.finepiad,
+            id: order.id ?? order.Id,
+            userId: order.userId ?? order.userid ?? order.user?.id,
+            userName: order.userName ?? (order.user ? order.user.firstName + ' ' + order.user.lastName : ''),
+            bookId: order.bookId ?? order.book?.id,
+            bookTitle: order.bookTitle ?? order.book?.title,
+            orderDate: order.orderDate ?? order.OrderDate,
+            returned: order.returned ?? false,
+            returnDate: order.returnDate ?? null,
+            finePaid: order.finePaid ?? order.finepaid ?? order.finepiad ?? 0,
           };
           return newOrder;
         });
         return newOrders;
+      }),
+      catchError((err) => {
+        console.error('GetOrders failed', err);
+        return of([] as Order[]);
+      })
+    );
+  }
+
+  getUsers() {
+    return this.http.get<User[]>(this.baseUrl + 'GetUsers').pipe(
+      catchError((err) => {
+        console.error('GetUsers failed', err);
+        return of([] as User[]);
       })
     );
   }

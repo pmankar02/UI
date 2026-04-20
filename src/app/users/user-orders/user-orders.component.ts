@@ -36,7 +36,7 @@ columnsForCompletedReturns: string[] = [
     apiService.getOrdersOfUser(userId).subscribe({
       next:(res: Order[]) => {
         this.pendingReturns = res.filter((o) => !o.returned);
-        this.completedReturns = res.filter((o) => !o.returned);
+        this.completedReturns = res.filter((o) => o.returned);
       },
     });
   }
