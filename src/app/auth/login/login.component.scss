@@ -1,35 +1,80 @@
 
 
+// :host {
+//   display: block;
+//   width: 400px;
+  
+// }
+
+// mat-card {
+//   mat-card-header {
+//     display: flex;
+//     justify-content: center;
+
+//     mat-card-title {
+//       font-size: 2rem;
+//     }
+//   }
+
+//   mat-form-field {
+//     width: 100%;
+//     padding-top: 1rem;
+//   }
+
+//   mat-card-actions {
+//     button {
+//       margin: auto;
+//       width: 80%;
+//     }
+
+//     h4 {
+//       margin: 0;
+//       padding-right: 1rem;
+//     }
+//   }
+// }
+
+
 :host {
   display: block;
-  width: 400px;
-  
+  height: 100vh;
+  background: url('https://images.unsplash.com/photo-1521587760476-6c12a4b040da')
+              no-repeat center center/cover;
+  position: relative;
 }
 
-mat-card {
-  mat-card-header {
-    display: flex;
-    justify-content: center;
+/* Dark overlay for readability */
+:host::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.7);
+}
 
-    mat-card-title {
-      font-size: 2rem;
-    }
-  }
+/* Center container */
+.login-container {
+  position: relative;
+  z-index: 1;
+  height: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
 
-  mat-form-field {
-    width: 100%;
-    padding-top: 1rem;
-  }
+/* Card styling */
+.login-card {
+  width: 400px;
+  padding: 25px;
+  border-radius: 15px;
+  backdrop-filter: blur(10px);
+  background: rgba(30, 20, 10, 0.8);
+  color: #fff;
+}
 
-  mat-card-actions {
-    button {
-      margin: auto;
-      width: 80%;
-    }
-
-    h4 {
-      margin: 0;
-      padding-right: 1rem;
-    }
-  }
+/* Button style */
+.login-btn {
+  width: 100%;
+  background: linear-gradient(45deg, #c89b3c, #f5d06f);
+  color: black;
+  font-weight: bold;
 }

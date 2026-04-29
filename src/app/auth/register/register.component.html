@@ -1,4 +1,4 @@
-<div class="register-form">
+<!-- <div class="register-form">
     <mat-card>
         <mat-card-header>
             <mat-card-title>Create Account</mat-card-title>
@@ -122,4 +122,120 @@
             </p>
         </mat-list-item>
     </mat-list>
-</div>
+</div> -->
+
+
+
+
+
+  
+
+
+    <div class="register-page">
+
+  
+  <div class="main-container">
+
+    
+    <div class="register-section">
+      <h2><mat-icon>menu_book</mat-icon> Create Account</h2>
+
+      <form>
+
+        
+        <div class="row">
+          <mat-form-field appearance="outline">
+            <mat-label>First Name*</mat-label>
+            <input matInput required>
+            <mat-icon matSuffix>person</mat-icon>
+          </mat-form-field>
+
+          <mat-form-field appearance="outline">
+            <mat-label>Last Name*</mat-label>
+            <input matInput required>
+            <mat-icon matSuffix>person_outline</mat-icon>
+          </mat-form-field>
+        </div>
+
+        
+        <mat-form-field appearance="outline" class="full-width">
+          <mat-label>Email*</mat-label>
+          <input matInput type="email" required>
+          <mat-icon matSuffix>email</mat-icon>
+        </mat-form-field>
+
+        
+        <mat-form-field appearance="outline" class="full-width">
+          <mat-label>Mobile Number*</mat-label>
+          <input matInput type="tel" required>
+          <mat-icon matSuffix>phone</mat-icon>
+        </mat-form-field>
+
+    
+        <div class="row">
+          <mat-form-field appearance="outline">
+            <mat-label>Password*</mat-label>
+            <input matInput type="password" required>
+            <mat-icon matSuffix>lock</mat-icon>
+          </mat-form-field>
+
+          <mat-form-field appearance="outline">
+            <mat-label>Repeat Password*</mat-label>
+            <input matInput type="password" required>
+            <mat-icon matSuffix>visibility_off</mat-icon>
+          </mat-form-field>
+        </div>
+
+        
+        <button mat-raised-button class="register-btn">
+          <mat-icon>library_add</mat-icon> Register
+        </button>
+
+      </form>
+
+      
+      <div class="bottom-login">
+        <span>Already have an account?</span>
+        <button mat-stroked-button>Login</button>
+      </div>
+    </div>
+
+
+    <div class="info-section">
+
+      <h2><mat-icon>inventory_2</mat-icon> Information</h2>
+
+      <div class="info-item">
+        <mat-icon>track_changes</mat-icon>
+        <p>Once you create account, approval request will be sent to admin. If approved, your account will be created.</p>
+      </div>
+
+      <div class="info-item">
+        <mat-icon>layers</mat-icon>
+        <p>You can have maximum 3 books ordered that have not been returned.</p>
+      </div>
+
+      <div class="info-item">
+        <mat-icon>calendar_month</mat-icon>
+        <p>You can keep a book with you for maximum 10 days.</p>
+      </div>
+
+      <div class="info-item">
+        <mat-icon>mail</mat-icon>
+        <p>If book is not returned after 10 days, you will receive an email.</p>
+      </div>
+
+      <div class="info-item">
+        <mat-icon>currency_rupee</mat-icon>
+        <p>After 10th day, ₹50 fine per day on every delayed book.</p>
+      </div>
+
+      <div class="info-item">
+        <mat-icon>verified_user</mat-icon>
+        <p>If fine exceeds ₹500 or book is damaged, Admin can block your account.</p>
+      </div>
+
+    </div>
+
+  </div>
+ 

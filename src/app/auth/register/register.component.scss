@@ -1,73 +1,292 @@
 
-:host {
-    display: flex;
-    justify-content: space-between;
-    height: 100%;
-    width: 90%;
-    background: linear-gradient(135deg, #7e648c, #0c0c0d);
-}
+// :host {
+//     display: flex;
+//     justify-content: space-between;
+//     height: 100%;
+//     width: 90%;
+//     background: linear-gradient(135deg, #7e648c, #0c0c0d);
+// }
 
 
-.register-form {
-    width: 400px;
-    //border: 1px solid white;
+// .register-form {
+//     width: 400px;
+//     //border: 1px solid white;
 
-    mat-card {
-        mat-card-header {
-            display: flex;
-            justify-content: center;
+//     mat-card {
+//         mat-card-header {
+//             display: flex;
+//             justify-content: center;
 
-            mat-card-title {
-                font-size: 2rem;
+//             mat-card-title {
+//                 font-size: 2rem;
                
-            }
+//             }
 
-        }
-        mat-grid-title {
-            mat-form-field {
-                width: 100%;
+//         }
+//         mat-grid-title {
+//             mat-form-field {
+//                 width: 100%;
 
-            }
+//             }
             
-        }
-        mat-card-actions {
-             button {
-                width: 80%;
-                margin: auto;
-             }
-         h5{
-            padding: 1rem;
-         }
-        }
-    }
-}
+//         }
+//         mat-card-actions {
+//              button {
+//                 width: 80%;
+//                 margin: auto;
+//              }
+//          h5{
+//             padding: 1rem;
+//          }
+//         }
+//     }
+// }
   
 
-.library-info {
-    width: 30%;
-    padding: 1rem;
-    border-left: 1px solid white;
-    margin-left: 10px;
+// .library-info {
+//     width: 30%;
+//     padding: 1rem;
+//     border-left: 1px solid white;
+//     margin-left: 10px;
 
-    mat-list-item {
-        height: auto;
+//     mat-list-item {
+//         height: auto;
 
-        P {
-            font: 1.2rem;
-            font-style: italic;
-            text-align: justify;
-            white-space: normal;
-        }
+//         P {
+//             font: 1.2rem;
+//             font-style: italic;
+//             text-align: justify;
+//             white-space: normal;
+//         }
 
-    }
+//     }
+// }
+
+// .width-100  {
+//     width: -webkit-fill-available;
+// }
+// mat-grid-tile{
+//     height: 50px;
+// }
+// .mat-mdc-form-field-bottom-align.mat-mdc-form-field-subscript-wrapper {
+//     height: 0;
+// }
+
+
+
+
+/* Full Background */
+
+:host {
+  display: block;
+  height: 100vh;
+  background: url('https://images.unsplash.com/photo-1521587760476-6c12a4b040da')
+              no-repeat center center/cover;
+  position: relative;
+}
+.register-page {
+  min-height: 100vh;
+  background: linear-gradient(rgba(20,10,5,0.82), rgba(20,10,5,0.82)),
+              url('/assets/library-bg.jpg') no-repeat center center/cover;
+  padding: 20px;
+  font-family: 'Poppins', sans-serif;
+  color: white;
 }
 
-.width-100  {
-    width: -webkit-fill-available;
+/* Navbar */
+.top-navbar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 25px;
 }
-mat-grid-tile{
-    height: 50px;
+
+.auth-logo {
+  padding: 12px 25px;
+  border: 2px solid #ffffff88;
+  border-radius: 14px;
+  font-size: 24px;
+  font-weight: bold;
+  letter-spacing: 3px;
+  background: rgba(0,0,0,0.4);
 }
-.mat-mdc-form-field-bottom-align.mat-mdc-form-field-subscript-wrapper {
-    height: 0;
+
+.top-navbar h1 {
+  font-size: 34px;
+  font-weight: 600;
+  color: #ffffff;
+}
+
+.nav-buttons {
+  display: flex;
+  gap: 12px;
+}
+
+.nav-buttons button:first-child {
+  color: #ffcc80;
+}
+
+.nav-buttons button:last-child {
+  background: linear-gradient(90deg, #ffb74d, #ff9800);
+  color: black;
+  border-radius: 20px;
+}
+
+/* Main Glass Card */
+.main-container {
+  max-width: 1400px;
+  margin: auto;
+  display: flex;
+  background: rgba(255, 180, 80, 0.08);
+  backdrop-filter: blur(14px);
+  border: 1px solid rgba(255,255,255,0.12);
+  border-radius: 24px;
+  overflow: hidden;
+  box-shadow: 0 8px 40px rgba(0,0,0,0.55);
+}
+
+/* Left */
+.register-section {
+  flex: 1.2;
+  padding: 45px;
+  border-right: 1px solid rgba(255,255,255,0.12);
+}
+
+.register-section h2 {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  color: #ffb74d;
+  font-size: 36px;
+  margin-bottom: 30px;
+  font-weight: 700;
+}
+
+/* Right */
+.info-section {
+  flex: 1;
+  padding: 45px;
+}
+
+.info-section h2 {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  color: #ffb74d;
+  font-size: 34px;
+  margin-bottom: 30px;
+}
+
+/* Form Rows */
+.row {
+  display: flex;
+  gap: 18px;
+}
+
+.row mat-form-field {
+  flex: 1;
+}
+
+.full-width {
+  width: 100%;
+}
+
+/* Material Fields */
+mat-form-field {
+  margin-bottom: 20px;
+}
+
+::ng-deep .mat-mdc-text-field-wrapper {
+  background: rgba(255,255,255,0.05) !important;
+  border-radius: 12px !important;
+}
+
+::ng-deep .mdc-notched-outline__leading,
+::ng-deep .mdc-notched-outline__notch,
+::ng-deep .mdc-notched-outline__trailing {
+  border-color: rgba(255,183,77,0.4) !important;
+}
+
+/* Register Button */
+.register-btn {
+  width: 100%;
+  padding: 15px;
+  margin-top: 10px;
+  font-size: 20px;
+  font-weight: 700;
+  border-radius: 30px;
+  background: linear-gradient(90deg, #ffb74d, #ff9800) !important;
+  color: black !important;
+}
+
+.register-btn mat-icon {
+  margin-right: 8px;
+}
+
+/* Bottom Login */
+.bottom-login {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-top: 25px;
+}
+
+.bottom-login button {
+  border-radius: 20px;
+  color: #ffb74d !important;
+  border-color: #ffb74d !important;
+}
+
+/* Info Items */
+.info-item {
+  display: flex;
+  gap: 15px;
+  margin-bottom: 22px;
+  align-items: flex-start;
+}
+
+.info-item mat-icon {
+  color: #ffb74d;
+  font-size: 30px;
+  min-width: 30px;
+}
+
+.info-item p {
+  margin: 0;
+  font-size: 18px;
+  line-height: 1.7;
+  color: #f5e6d3;
+}
+
+/* Responsive */
+@media (max-width: 1100px) {
+  .main-container {
+    flex-direction: column;
+  }
+
+  .register-section {
+    border-right: none;
+    border-bottom: 1px solid rgba(255,255,255,0.1);
+  }
+}
+
+@media (max-width: 768px) {
+  .row {
+    flex-direction: column;
+  }
+
+  .top-navbar {
+    flex-direction: column;
+    gap: 15px;
+  }
+
+  .top-navbar h1 {
+    font-size: 24px;
+    text-align: center;
+  }
+
+  .register-section,
+  .info-section {
+    padding: 25px;
+  }
 }
